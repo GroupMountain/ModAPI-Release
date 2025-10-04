@@ -1,0 +1,9 @@
+{
+    "author": "GroupMountain",
+    "description": "Group Mountain Mod API",
+    "entry": "ModAPI.dll",
+    "name": "ModAPI",
+    "passive": true,
+    "type": "native",
+    "version": "0.1.0+1b45a83"
+}

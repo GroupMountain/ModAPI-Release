@@ -1,0 +1,41 @@
+{
+    "format_version": 3,
+    "format_uuid": "289f771f-2c9a-4d73-9f3f-8492495a924d",
+    "tooth": "github.com/GroupMountain/ModAPI-Release",
+    "version": "0.1.0",
+    "info": {
+        "name": "ModAPI",
+        "description": "Group Mountain Mod Api",
+        "tags": [
+            "platform:levilamina",
+            "type:mod",
+            "modapi",
+            "library"
+        ],
+        "avatar_url": "https://raw.githubusercontent.com/GroupMountain/ModAPI-Release/refs/heads/main/icon.png"
+    },
+    "variants": [
+        {
+            "platform": "win-x64",
+            "dependencies": {
+                "github.com/LiteLDev/LeviLamina": ">=1.5.0"
+            },
+            "assets": [
+                {
+                    "type": "self",
+                    "urls": [],
+                    "placements": [
+                        {
+                            "type": "dir",
+                            "src": "bin/dll/ModAPI",
+                            "dest": "plugins/ModAPI/"
+                        }
+                    ]
+                }
+            ],
+            "remove_files": [
+                "plugins/ModAPI"
+            ]
+        }
+    ]
+}

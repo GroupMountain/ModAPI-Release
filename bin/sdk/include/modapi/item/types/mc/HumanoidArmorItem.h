@@ -1,0 +1,213 @@
+#pragma once
+#include "modapi/Macros.h"
+#include <mc/deps/shared_types/legacy/LevelSoundEvent.h>
+#include <mc/deps/shared_types/legacy/actor/ActorLocation.h>
+#include <mc/deps/shared_types/legacy/actor/ArmorSlot.h>
+#include <mc/world/item/Item.h>
+
+class Actor;
+class BaseGameVersion;
+class BlockSource;
+class CompoundTag;
+class Container;
+class ItemDescriptor;
+class ItemInstance;
+class ItemStack;
+class ItemStackBase;
+class Level;
+class Mob;
+class Player;
+class Vec3;
+struct ResolvedItemIconInfo;
+namespace Bedrock::Safety {
+class RedactableString;
+}
+namespace mce {
+class Color;
+}
+
+class HumanoidArmorItem : public ::Item {
+public:
+    enum class Tier : int {
+        Leather   = 0,
+        Chain     = 1,
+        Iron      = 2,
+        Diamond   = 3,
+        Gold      = 4,
+        Elytra    = 5,
+        Turtle    = 6,
+        Netherite = 7,
+    };
+
+    class ArmorMaterial {
+    public:
+        int   mDurabilityMultiplier;
+        int   mSlotProtections[4];
+        int   mToughnessValue;
+        int   mEnchantmentValue;
+        float mKnockbackResistance;
+    };
+
+public:
+    ::SharedTypes::Legacy::ArmorSlot mSlot;
+    int                              mDefense;
+    int                              mModelIndex;
+    ArmorMaterial const&             mArmorType;
+    bool                             mCurrentVersionAllowsTrim;
+
+public:
+    MOD_NDAPI HumanoidArmorItem(std::string const& name, HumanoidArmorItem::Tier armorTier);
+
+    // vIndex: 10
+    virtual bool isHumanoidArmor() const /*override*/;
+
+    // vIndex: 53
+    virtual bool isValidRepairItem(
+        ::ItemStackBase const&   source,
+        ::ItemStackBase const&   repairItem,
+        ::BaseGameVersion const& baseGameVersion
+    ) const /*override*/;
+
+    // vIndex: 54
+    virtual int getEnchantSlot() const /*override*/;
+
+    // vIndex: 55
+    virtual int getEnchantValue() const /*override*/;
+
+    // vIndex: 56
+    virtual int getArmorValue() const /*override*/;
+
+    // vIndex: 57
+    virtual int getToughnessValue() const /*override*/;
+
+    // vIndex: 121
+    virtual float getArmorKnockbackResistance() const;
+
+    // vIndex: 67
+    virtual bool hasCustomColor(::CompoundTag const* userData) const /*override*/;
+
+    // vIndex: 66
+    virtual ::mce::Color getColor(::CompoundTag const* userData, ::ItemDescriptor const&) const /*override*/;
+
+    // vIndex: 69
+    virtual void clearColor(::ItemStackBase& instance) const /*override*/;
+
+    // vIndex: 70
+    virtual void setColor(::ItemStackBase& item, ::mce::Color const& color) const /*override*/;
+
+    // vIndex: 15
+    virtual bool isDyeable() const /*override*/;
+
+    // vIndex: 22
+    virtual bool isTrimAllowed() const /*override*/;
+
+    // vIndex: 101
+    virtual ::SharedTypes::Legacy::ActorLocation getEquipLocation() const /*override*/;
+
+    // vIndex: 102
+    virtual ::SharedTypes::Legacy::LevelSoundEvent getEquipSound() const /*override*/;
+
+    // vIndex: 61
+    virtual int getDamageChance(int unbreaking) const /*override*/;
+
+    // vIndex: 78
+    virtual bool dispense(::BlockSource& region, ::Container& container, int slot, ::Vec3 const& pos, uchar) const
+        /*override*/;
+
+    // vIndex: 52
+    virtual void appendFormattedHovertext(
+        ::ItemStackBase const&               stack,
+        ::Level&                             level,
+        ::Bedrock::Safety::RedactableString& hovertext,
+        bool const                           showCategory
+    ) const /*override*/;
+
+    // vIndex: 82
+    virtual void hurtActor(::ItemStack& item, ::Actor& actor, ::Mob& attacker) const /*override*/;
+
+    // vIndex: 108
+    virtual ::ResolvedItemIconInfo
+    getIconInfo(::ItemStackBase const& item, int newAnimationFrame, bool inInventoryPane) const /*override*/;
+
+    // vIndex: 76
+    virtual ::ItemStack& use(::ItemStack& item, ::Player& player) const /*override*/;
+
+    // vIndex: 74
+    virtual int buildIdAux(short auxValue, ::CompoundTag const* userData) const /*override*/;
+
+    // vIndex: 0
+    virtual ~HumanoidArmorItem() /*override*/ = default;
+
+public:
+    MCAPI ::ItemInstance getTierItem() const;
+
+public:
+    MCAPI static ArmorMaterial const& CHAIN();
+    MCAPI static ArmorMaterial const& COPPER();
+    MCAPI static ::mce::Color&        DEFAULT_LEATHER_COLOR();
+    MCAPI static ArmorMaterial const& DIAMOND();
+    MCAPI static ArmorMaterial const& ELYTRA();
+    MCAPI static ArmorMaterial const& GOLD();
+    MCAPI static ArmorMaterial const& IRON();
+    MCAPI static ArmorMaterial const& LEATHER();
+    MCAPI static ArmorMaterial const& NETHERITE();
+    MCAPI static ArmorMaterial const& TURTLE();
+
+public:
+    MCFOLD bool $isHumanoidArmor() const;
+
+    MCAPI bool $isValidRepairItem(
+        ::ItemStackBase const&   source,
+        ::ItemStackBase const&   repairItem,
+        ::BaseGameVersion const& baseGameVersion
+    ) const;
+
+    MCAPI int $getEnchantSlot() const;
+
+    MCAPI int $getEnchantValue() const;
+
+    MCFOLD int $getArmorValue() const;
+
+    MCAPI int $getToughnessValue() const;
+
+    MCAPI float $getArmorKnockbackResistance() const;
+
+    MCAPI bool $hasCustomColor(::CompoundTag const* userData) const;
+
+    MCAPI ::mce::Color $getColor(::CompoundTag const* userData, ::ItemDescriptor const&) const;
+
+    MCFOLD void $clearColor(::ItemStackBase& instance) const;
+
+    MCFOLD void $setColor(::ItemStackBase& item, ::mce::Color const& color) const;
+
+    MCAPI bool $isDyeable() const;
+
+    MCAPI bool $isTrimAllowed() const;
+
+    MCAPI ::SharedTypes::Legacy::ActorLocation $getEquipLocation() const;
+
+    MCAPI ::SharedTypes::Legacy::LevelSoundEvent $getEquipSound() const;
+
+    MCAPI int $getDamageChance(int unbreaking) const;
+
+    MCAPI bool $dispense(::BlockSource& region, ::Container& container, int slot, ::Vec3 const& pos, uchar) const;
+
+    MCAPI void $appendFormattedHovertext(
+        ::ItemStackBase const&               stack,
+        ::Level&                             level,
+        ::Bedrock::Safety::RedactableString& hovertext,
+        bool const                           showCategory
+    ) const;
+
+    MCFOLD void $hurtActor(::ItemStack& item, ::Actor& actor, ::Mob& attacker) const;
+
+    MCAPI ::ResolvedItemIconInfo
+    $getIconInfo(::ItemStackBase const& item, int newAnimationFrame, bool inInventoryPane) const;
+
+    MCAPI ::ItemStack& $use(::ItemStack& item, ::Player& player) const;
+
+    MCAPI int $buildIdAux(short auxValue, ::CompoundTag const* userData) const;
+
+public:
+    MCNAPI static void** $vftable();
+};
