@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.1] - 2025-10-12
+
+### Fixed
+
+- Fixed the Chinese path and incorrect output of AddonLoader [#1] @zimuya4153
+
 ## [0.1.0] - 2025-10-04
 
 ### Added
@@ -17,5 +23,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Refactor the worldgen api @killcerr
 
-[Unreleased]: http://github.com/GroupMountain/ModAPI-Release/compare/v0.1.0...HEAD
+[#1]: http://github.com/GroupMountain/ModAPI-Release/issues/1
+
+[Unreleased]: http://github.com/GroupMountain/ModAPI-Release/compare/v0.1.1...HEAD
+[0.1.1]: http://github.com/GroupMountain/ModAPI-Release/compare/v0.1.0...v0.1.1
 [0.1.0]: http://github.com/GroupMountain/ModAPI-Release/releases/tag/v0.1.0
