@@ -13,10 +13,6 @@ namespace modapi::inline item {
 
 class ICustomArmorItem : public ::HumanoidArmorItem {
 public:
-    struct Impl;
-    std::unique_ptr<Impl> pImpl;
-
-public:
     MOD_NDAPI ICustomArmorItem(std::string const& identifier, HumanoidArmorItem::Tier armorTier);
 
     MOD_API ~ICustomArmorItem();
@@ -51,7 +47,7 @@ public:
 
     MOD_API virtual ::SharedTypes::Legacy::UseAnimation getUseAnimation() const;
 
-    MOD_API virtual ::std::string getCooldownCategory() const;
+    MOD_API virtual ::HashedString const& getCooldownCategory() const;
 
     MOD_API virtual bool requiresWorldBuilder() const;
 
@@ -94,8 +90,6 @@ public:
     MOD_API virtual int getFrameCount() const;
 
     MOD_API virtual std::string getInteractButtonText() const;
-
-    MOD_API HashedString const& getCooldownType() const override;
 
     MOD_API int getArmorValue() const override;
 

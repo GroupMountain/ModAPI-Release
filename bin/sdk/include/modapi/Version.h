@@ -2,10 +2,10 @@
 
 // clang-format off
 #define MODAPI_VERSION_MAJOR         0
-#define MODAPI_VERSION_MINOR         1
-#define MODAPI_VERSION_PATCH         1
+#define MODAPI_VERSION_MINOR         2
+#define MODAPI_VERSION_PATCH         0
 /* #undef MODAPI_VERSION_PRERELEASE */
-#define MODAPI_VERSION_COMMIT_SHA    b6adb37
+#define MODAPI_VERSION_COMMIT_SHA    88654cb
 // clang-format on
 
 #define MODAPI_VERSION_TO_STRING_INNER(ver) #ver

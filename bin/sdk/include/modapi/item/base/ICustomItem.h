@@ -13,10 +13,6 @@ namespace modapi::inline item {
 
 class ICustomItem : public ::Item {
 public:
-    struct Impl;
-    std::unique_ptr<Impl> pImpl;
-
-public:
     MOD_NDAPI explicit ICustomItem(std::string const& identifier);
 
     MOD_API ~ICustomItem();
@@ -67,7 +63,7 @@ public:
 
     MOD_API virtual ::std::string getCreativeGroup() const;
 
-    MOD_API virtual ::std::string getCooldownCategory() const;
+    MOD_API virtual ::HashedString const& getCooldownCategory() const;
 
     MOD_API virtual bool isDiggerItem() const;
 
@@ -92,8 +88,6 @@ public:
     MOD_API virtual int getFrameCount() const;
 
     MOD_API virtual std::string getInteractButtonText() const;
-
-    MOD_API HashedString const& getCooldownType() const override;
 
     MOD_API float getDestroySpeed(::ItemStackBase const& item, ::Block const& block) const override;
 
