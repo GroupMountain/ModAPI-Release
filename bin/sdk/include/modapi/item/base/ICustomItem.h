@@ -109,13 +109,19 @@ public:
     MOD_API virtual void _init();
 
     // tmpe fix
-    MOD_API PuvLoadData::LoadResultWithTiming
-    initServer(Json::Value const& json, SemVersion const& version, IPackLoadContext& context, JsonBetaState const state)
-        override;
+    MOD_API PuvLoadData::LoadResultWithTiming initServer(
+        Json::Value const&  json,
+        SemVersion const&   version,
+        IPackLoadContext&   context,
+        JsonBetaState const state
+    ) override;
 
-    MOD_API PuvLoadData::LoadResultWithTiming
-    initClient(Json::Value const& json, SemVersion const& version, JsonBetaState const state, IPackLoadContext& context)
-        override;
+    MOD_API PuvLoadData::LoadResultWithTiming initClient(
+        Json::Value const&  json,
+        SemVersion const&   version,
+        JsonBetaState const state,
+        IPackLoadContext&   context
+    ) override;
 };
 
 } // namespace modapi::inline item

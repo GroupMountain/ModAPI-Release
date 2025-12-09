@@ -52,14 +52,14 @@ public:
 
 } // namespace modapi::inline item
 
-#define GMLIB_REGISTER_ITEM(ITEM_CLASS, ...)                                                                           \
-    inline static auto GMLIB_CUSTOM_ITEM_##ITEM_CLASS = [] {                                                           \
+#define MODAPI_REGISTER_ITEM(ITEM_CLASS, ...)                                                                          \
+    inline static auto MODAPI_CUSTOM_ITEM_##ITEM_CLASS = [] {                                                          \
         ::modapi::CustomItemRegistry::getInstance().registerItem<ITEM_CLASS>(__VA_ARGS__);                             \
         return 0;                                                                                                      \
     }();
 
-#define GMLIB_REGISTER_ITEMS(IDENTIFIER, ITEM_CLASS, ...)                                                              \
-    inline static auto GMLIB_CUSTOM_ITEM_##IDENTIFIER = [] {                                                           \
+#define MODAPI_REGISTER_ITEMS(IDENTIFIER, ITEM_CLASS, ...)                                                             \
+    inline static auto MODAPI_CUSTOM_ITEM_##IDENTIFIER = [] {                                                          \
         ::modapi::CustomItemRegistry::getInstance().registerItem<ITEM_CLASS>(__VA_ARGS__);                             \
         return 0;                                                                                                      \
     }();

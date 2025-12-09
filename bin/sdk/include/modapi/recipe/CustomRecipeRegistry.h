@@ -119,14 +119,14 @@ public:
 
 } // namespace modapi::inline recipe
 
-#define GMLIB_REGISTER_RECIPE(RECIPE_CLASS, ...)                                                                       \
-    inline static auto GMLIB_CUSTOM_RECIPE_##RECIPE_CLASS = [] {                                                       \
+#define MODAPI_REGISTER_RECIPE(RECIPE_CLASS, ...)                                                                      \
+    inline static auto MODAPI_CUSTOM_RECIPE_##RECIPE_CLASS = [] {                                                      \
         ::modapi::CustomRecipeRegistry::getInstance().registerRecipe<RECIPE_CLASS>(__VA_ARGS__);                       \
         return 0;                                                                                                      \
     }();
 
-#define GMLIB_REGISTER_RECIPES(IDENTIFIER, RECIPE_CLASS, ...)                                                          \
-    inline static auto GMLIB_CUSTOM_RECIPE_##IDENTIFIER = [] {                                                         \
+#define MODAPI_REGISTER_RECIPES(IDENTIFIER, RECIPE_CLASS, ...)                                                         \
+    inline static auto MODAPI_CUSTOM_RECIPE_##IDENTIFIER = [] {                                                        \
         ::modapi::CustomRecipeRegistry::getInstance().registerRecipe<RECIPE_CLASS>(__VA_ARGS__);                       \
         return 0;                                                                                                      \
     }();

@@ -1,10 +1,16 @@
 #pragma once
+
 #include "modapi/Macros.h"
+#include <mc/_HeaderOutputPredefine.h>
+
+// auto generated inclusion list
 #include <mc/deps/shared_types/legacy/LevelSoundEvent.h>
 #include <mc/deps/shared_types/legacy/actor/ActorLocation.h>
 #include <mc/deps/shared_types/legacy/actor/ArmorSlot.h>
 #include <mc/world/item/Item.h>
 
+// auto generated forward declare list
+// clang-format off
 class Actor;
 class BaseGameVersion;
 class BlockSource;
@@ -19,15 +25,18 @@ class Mob;
 class Player;
 class Vec3;
 struct ResolvedItemIconInfo;
-namespace Bedrock::Safety {
-class RedactableString;
-}
-namespace mce {
-class Color;
-}
+namespace Bedrock::Safety { class RedactableString; }
+namespace mce { class Color; }
+// clang-format on
 
 class HumanoidArmorItem : public ::Item {
 public:
+    // HumanoidArmorItem inner types declare
+    // clang-format off
+    class ArmorMaterial;
+    // clang-format on
+
+    // HumanoidArmorItem inner types define
     enum class Tier : int {
         Leather   = 0,
         Chain     = 1,
@@ -37,62 +46,76 @@ public:
         Elytra    = 5,
         Turtle    = 6,
         Netherite = 7,
+        Copper    = 8,
     };
 
     class ArmorMaterial {
     public:
+        // member variables
+        // NOLINTBEGIN
         int   mDurabilityMultiplier;
         int   mSlotProtections[4];
         int   mToughnessValue;
         int   mEnchantmentValue;
         float mKnockbackResistance;
+        // NOLINTEND
     };
 
 public:
-    ::SharedTypes::Legacy::ArmorSlot mSlot;
-    int                              mDefense;
-    int                              mModelIndex;
-    ArmorMaterial const&             mArmorType;
-    bool                             mCurrentVersionAllowsTrim;
+    // member variables
+    // NOLINTBEGIN
+    ::SharedTypes::Legacy::ArmorSlot          mSlot;
+    int                                       mDefense;
+    int                                       mModelIndex;
+    ::HumanoidArmorItem::ArmorMaterial const& mArmorType;
+    bool                                      mCurrentVersionAllowsTrim;
+    // NOLINTEND
 
 public:
-    MOD_NDAPI HumanoidArmorItem(std::string const& name, HumanoidArmorItem::Tier armorTier);
+    // prevent constructor by default
+    MOD_NDAPI          HumanoidArmorItem(std::string const& name, HumanoidArmorItem::Tier armorTier);
+    HumanoidArmorItem& operator=(HumanoidArmorItem const&);
+    HumanoidArmorItem(HumanoidArmorItem const&);
+    HumanoidArmorItem();
 
+public:
+    // virtual functions
+    // NOLINTBEGIN
     // vIndex: 10
     virtual bool isHumanoidArmor() const /*override*/;
 
-    // vIndex: 53
+    // vIndex: 54
     virtual bool isValidRepairItem(
         ::ItemStackBase const&   source,
         ::ItemStackBase const&   repairItem,
         ::BaseGameVersion const& baseGameVersion
     ) const /*override*/;
 
-    // vIndex: 54
+    // vIndex: 55
     virtual int getEnchantSlot() const /*override*/;
 
-    // vIndex: 55
+    // vIndex: 56
     virtual int getEnchantValue() const /*override*/;
 
-    // vIndex: 56
+    // vIndex: 57
     virtual int getArmorValue() const /*override*/;
 
-    // vIndex: 57
+    // vIndex: 58
     virtual int getToughnessValue() const /*override*/;
 
-    // vIndex: 121
+    // vIndex: 124
     virtual float getArmorKnockbackResistance() const;
 
-    // vIndex: 67
+    // vIndex: 68
     virtual bool hasCustomColor(::CompoundTag const* userData) const /*override*/;
 
-    // vIndex: 66
+    // vIndex: 67
     virtual ::mce::Color getColor(::CompoundTag const* userData, ::ItemDescriptor const&) const /*override*/;
 
-    // vIndex: 69
+    // vIndex: 70
     virtual void clearColor(::ItemStackBase& instance) const /*override*/;
 
-    // vIndex: 70
+    // vIndex: 71
     virtual void setColor(::ItemStackBase& item, ::mce::Color const& color) const /*override*/;
 
     // vIndex: 15
@@ -101,20 +124,20 @@ public:
     // vIndex: 22
     virtual bool isTrimAllowed() const /*override*/;
 
-    // vIndex: 101
+    // vIndex: 104
     virtual ::SharedTypes::Legacy::ActorLocation getEquipLocation() const /*override*/;
 
-    // vIndex: 102
+    // vIndex: 105
     virtual ::SharedTypes::Legacy::LevelSoundEvent getEquipSound() const /*override*/;
 
-    // vIndex: 61
+    // vIndex: 62
     virtual int getDamageChance(int unbreaking) const /*override*/;
 
-    // vIndex: 78
+    // vIndex: 81
     virtual bool dispense(::BlockSource& region, ::Container& container, int slot, ::Vec3 const& pos, uchar) const
         /*override*/;
 
-    // vIndex: 52
+    // vIndex: 53
     virtual void appendFormattedHovertext(
         ::ItemStackBase const&               stack,
         ::Level&                             level,
@@ -122,38 +145,58 @@ public:
         bool const                           showCategory
     ) const /*override*/;
 
-    // vIndex: 82
+    // vIndex: 85
     virtual void hurtActor(::ItemStack& item, ::Actor& actor, ::Mob& attacker) const /*override*/;
 
-    // vIndex: 108
+    // vIndex: 111
     virtual ::ResolvedItemIconInfo
     getIconInfo(::ItemStackBase const& item, int newAnimationFrame, bool inInventoryPane) const /*override*/;
 
-    // vIndex: 76
+    // vIndex: 77
     virtual ::ItemStack& use(::ItemStack& item, ::Player& player) const /*override*/;
 
-    // vIndex: 74
+    // vIndex: 75
     virtual int buildIdAux(short auxValue, ::CompoundTag const* userData) const /*override*/;
 
     // vIndex: 0
     virtual ~HumanoidArmorItem() /*override*/ = default;
+    // NOLINTEND
 
 public:
+    // member functions
+    // NOLINTBEGIN
+    MCAPI ::std::string _buildAttributeText() const;
+
     MCAPI ::ItemInstance getTierItem() const;
+    // NOLINTEND
 
 public:
-    MCAPI static ArmorMaterial const& CHAIN();
-    MCAPI static ArmorMaterial const& COPPER();
-    MCAPI static ::mce::Color&        DEFAULT_LEATHER_COLOR();
-    MCAPI static ArmorMaterial const& DIAMOND();
-    MCAPI static ArmorMaterial const& ELYTRA();
-    MCAPI static ArmorMaterial const& GOLD();
-    MCAPI static ArmorMaterial const& IRON();
-    MCAPI static ArmorMaterial const& LEATHER();
-    MCAPI static ArmorMaterial const& NETHERITE();
-    MCAPI static ArmorMaterial const& TURTLE();
+    // static variables
+    // NOLINTBEGIN
+    MCAPI static ::HumanoidArmorItem::ArmorMaterial const& CHAIN();
+
+    MCAPI static ::HumanoidArmorItem::ArmorMaterial const& COPPER();
+
+    MCAPI static ::mce::Color& DEFAULT_LEATHER_COLOR();
+
+    MCAPI static ::HumanoidArmorItem::ArmorMaterial const& DIAMOND();
+
+    MCAPI static ::HumanoidArmorItem::ArmorMaterial const& ELYTRA();
+
+    MCAPI static ::HumanoidArmorItem::ArmorMaterial const& GOLD();
+
+    MCAPI static ::HumanoidArmorItem::ArmorMaterial const& IRON();
+
+    MCAPI static ::HumanoidArmorItem::ArmorMaterial const& LEATHER();
+
+    MCAPI static ::HumanoidArmorItem::ArmorMaterial const& NETHERITE();
+
+    MCAPI static ::HumanoidArmorItem::ArmorMaterial const& TURTLE();
+    // NOLINTEND
 
 public:
+    // virtual function thunks
+    // NOLINTBEGIN
     MCFOLD bool $isHumanoidArmor() const;
 
     MCAPI bool $isValidRepairItem(
@@ -184,8 +227,6 @@ public:
 
     MCAPI bool $isTrimAllowed() const;
 
-    MCAPI ::SharedTypes::Legacy::ActorLocation $getEquipLocation() const;
-
     MCAPI ::SharedTypes::Legacy::LevelSoundEvent $getEquipSound() const;
 
     MCAPI int $getDamageChance(int unbreaking) const;
@@ -207,7 +248,25 @@ public:
     MCAPI ::ItemStack& $use(::ItemStack& item, ::Player& player) const;
 
     MCAPI int $buildIdAux(short auxValue, ::CompoundTag const* userData) const;
+    // NOLINTEND
 
 public:
+    // vftables
+    // NOLINTBEGIN
     MCNAPI static void** $vftable();
+    // NOLINTEND
+
+    // tmpe fix
+    MOD_API PuvLoadData::LoadResultWithTiming initServer(
+        Json::Value const& json,
+        SemVersion const&  version,
+        IPackLoadContext&  context,
+        JsonBetaState      state
+    ) override;
+    MOD_API PuvLoadData::LoadResultWithTiming initClient(
+        Json::Value const& json,
+        SemVersion const&  version,
+        JsonBetaState      state,
+        IPackLoadContext&  context
+    ) override;
 };
