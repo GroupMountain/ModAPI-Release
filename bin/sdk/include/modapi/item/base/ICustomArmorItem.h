@@ -95,7 +95,7 @@ public:
 
     MOD_API int getToughnessValue() const override;
 
-    MOD_API float getArmorKnockbackResistance() const override;
+    MOD_API float getKnockbackResistanceValue() const override;
 
     MOD_API bool isDyeable() const override;
 

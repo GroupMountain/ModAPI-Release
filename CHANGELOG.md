@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.1] - 2026-1-31
+
+## Changed
+
+- Adapted LeviLamina 1.9.2 and BDS 1.21.132 @killcerr @n15421
+- Clean tmpfix for initServer and initclient @n15421
+
 ## [0.3.1] - 2025-11-28
 
 ## Changed
@@ -55,6 +62,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#1]: http://github.com/GroupMountain/ModAPI-Release/issues/1
 
 [Unreleased]: http://github.com/GroupMountain/ModAPI-Release/compare/v0.3.1...HEAD
+[0.4.0]: http://github.com/GroupMountain/ModAPI-Release/compare/v0.3.1...v0.4.0
 [0.3.1]: http://github.com/GroupMountain/ModAPI-Release/compare/v0.3.0...v0.3.1
 [0.3.0]: http://github.com/GroupMountain/ModAPI-Release/compare/v0.2.1...v0.3.0
 [0.2.1]: http://github.com/GroupMountain/ModAPI-Release/compare/v0.2.0...v0.2.1

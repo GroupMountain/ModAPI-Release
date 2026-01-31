@@ -120,7 +120,8 @@ public:
         Json::Value const&  json,
         SemVersion const&   version,
         JsonBetaState const state,
-        IPackLoadContext&   context
+        IPackLoadContext&   context,
+        ItemIconInfoFactory iconFactory
     ) override;
 };
 
