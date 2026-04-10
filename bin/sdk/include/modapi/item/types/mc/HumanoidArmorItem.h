@@ -142,8 +142,6 @@ public:
 public:
     // member functions
     // NOLINTBEGIN
-    MCAPI ::std::string _buildAttributeText() const;
-
     MCAPI ::ItemInstance getTierItem() const;
     // NOLINTEND
 
@@ -212,7 +210,7 @@ public:
 
     MCAPI bool $dispense(::BlockSource& region, ::Container& container, int slot, ::Vec3 const& pos, uchar) const;
 
-    MCAPI void $appendFormattedHovertext(
+    MCFOLD void $appendFormattedHovertext(
         ::ItemStackBase const&               stack,
         ::Level&                             level,
         ::Bedrock::Safety::RedactableString& hovertext,
@@ -234,6 +232,6 @@ public:
 public:
     // vftables
     // NOLINTBEGIN
-    MCNAPI static void** $vftable();
+    MCAPI static void** $vftable();
     // NOLINTEND
 };

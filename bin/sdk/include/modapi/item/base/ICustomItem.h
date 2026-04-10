@@ -3,11 +3,12 @@
 #include "modapi/item/types/DamageChance.h"
 #include "modapi/item/types/ItemIcon.h"
 #include "modapi/item/types/RepairItems.h"
+#include <mc/deps/nbt/CompoundTag.h>
 #include <mc/deps/shared_types/legacy/item/UseAnimation.h>
-#include <mc/nbt/CompoundTag.h>
 #include <mc/world/item/Item.h>
 #include <mc/world/item/Rarity.h>
 #include <mc/world/item/enchanting/Enchant.h>
+
 
 namespace modapi::inline item {
 
@@ -109,18 +110,13 @@ public:
     MOD_API virtual void _init();
 
     // tmpe fix
-    MOD_API PuvLoadData::LoadResultWithTiming initServer(
-        Json::Value const&  json,
-        SemVersion const&   version,
-        IPackLoadContext&   context,
-        JsonBetaState const state
-    ) override;
+    MOD_API PuvLoadData::LoadResultWithTiming
+            initServer(Json::Value const& json, SemVersion const& version, PackLoadContext& context) override;
 
     MOD_API PuvLoadData::LoadResultWithTiming initClient(
         Json::Value const&  json,
         SemVersion const&   version,
-        JsonBetaState const state,
-        IPackLoadContext&   context,
+        PackLoadContext&    context,
         ItemIconInfoFactory iconFactory
     ) override;
 };

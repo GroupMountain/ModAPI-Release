@@ -4,10 +4,11 @@
 #include "modapi/item/types/ItemIcon.h"
 #include "modapi/item/types/RepairItems.h"
 #include "modapi/item/types/mc/HumanoidArmorItem.h"
+#include <mc/deps/nbt/CompoundTag.h>
 #include <mc/deps/shared_types/legacy/item/UseAnimation.h>
-#include <mc/nbt/CompoundTag.h>
 #include <mc/world/item/Rarity.h>
 #include <mc/world/item/enchanting/Enchant.h>
+
 
 namespace modapi::inline item {
 

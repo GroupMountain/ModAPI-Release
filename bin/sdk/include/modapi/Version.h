@@ -1,11 +1,11 @@
 #pragma once
 
 // clang-format off
-#define MODAPI_VERSION_MAJOR         0
-#define MODAPI_VERSION_MINOR         4
+#define MODAPI_VERSION_MAJOR         26
+#define MODAPI_VERSION_MINOR         10
 #define MODAPI_VERSION_PATCH         0
 /* #undef MODAPI_VERSION_PRERELEASE */
-#define MODAPI_VERSION_COMMIT_SHA    d18ae2e
+#define MODAPI_VERSION_COMMIT_SHA    d30ab6e
 // clang-format on
 
 #define MODAPI_VERSION_TO_STRING_INNER(ver) #ver
