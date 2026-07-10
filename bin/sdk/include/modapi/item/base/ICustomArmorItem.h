@@ -48,7 +48,7 @@ public:
 
     MOD_API virtual ::SharedTypes::Legacy::UseAnimation getUseAnimation() const;
 
-    MOD_API virtual ::HashedString const& getCooldownCategory() const;
+    MOD_API virtual ::HashedString const& getCooldownCategory() const override;
 
     MOD_API virtual bool requiresWorldBuilder() const;
 
@@ -66,7 +66,7 @@ public:
 
     MOD_API virtual ::Interactions::Mining::MineBlockItemEffectType getMineBlockItemEffectType() const;
 
-    MOD_API virtual ::CreativeItemCategory getCreativeCategory() const;
+    MOD_API virtual ::SharedTypes::CreativeItemCategory getCreativeCategory() const;
 
     MOD_API virtual ::std::string getCreativeGroup() const;
 
@@ -74,7 +74,7 @@ public:
 
     MOD_API virtual float getFurnaceBurnInterval() const;
 
-    MOD_API virtual float getFurnaceXPmultiplier() const;
+    MOD_API virtual float getFurnaceXPmultiplier(::ItemStackBase const&) const override;
 
     MOD_API virtual ::ItemCommandVisibility shouldHiddenInCommands() const;
 
@@ -84,7 +84,7 @@ public:
 
     MOD_API virtual bool isSmithingTemplate() const;
 
-    MOD_API virtual bool canDestroyInCreative() const;
+    MOD_API virtual bool canDestroyInCreative() const override;
 
     MOD_API virtual float getMiningSpeed() const;
 

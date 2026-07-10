@@ -23,7 +23,7 @@ public:
 
     MOD_API bool canDestroyInCreative() const override;
 
-    MOD_API CreativeItemCategory getCreativeCategory() const override;
+    MOD_API ::SharedTypes::CreativeItemCategory getCreativeCategory() const override;
 
     MOD_API std::string getCreativeGroup() const override;
 

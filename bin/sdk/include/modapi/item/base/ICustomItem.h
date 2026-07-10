@@ -6,6 +6,8 @@
 #include <mc/deps/nbt/CompoundTag.h>
 #include <mc/deps/shared_types/legacy/item/UseAnimation.h>
 #include <mc/world/item/Item.h>
+#include <mc/world/item/ItemComprehensiveLoadResult.h>
+#include <mc/world/item/ItemIconInfo.h>
 #include <mc/world/item/Rarity.h>
 #include <mc/world/item/enchanting/Enchant.h>
 
@@ -60,11 +62,11 @@ public:
 
     MOD_API virtual ::Interactions::Mining::MineBlockItemEffectType getMineBlockItemEffectType() const;
 
-    MOD_API virtual ::CreativeItemCategory getCreativeCategory() const;
+    MOD_API virtual ::SharedTypes::CreativeItemCategory getCreativeCategory() const;
 
     MOD_API virtual ::std::string getCreativeGroup() const;
 
-    MOD_API virtual ::HashedString const& getCooldownCategory() const;
+    MOD_API virtual ::HashedString const& getCooldownCategory() const override;
 
     MOD_API virtual bool isDiggerItem() const;
 
@@ -74,7 +76,7 @@ public:
 
     MOD_API virtual float getFurnaceBurnInterval() const;
 
-    MOD_API virtual float getFurnaceXPmultiplier() const;
+    MOD_API virtual float getFurnaceXPmultiplier(::ItemStackBase const&) const override;
 
     MOD_API virtual ::ItemCommandVisibility shouldHiddenInCommands() const;
 
@@ -84,7 +86,7 @@ public:
 
     MOD_API virtual bool isSmithingTemplate() const;
 
-    MOD_API virtual bool canDestroyInCreative() const;
+    MOD_API virtual bool canDestroyInCreative() const override;
 
     MOD_API virtual int getFrameCount() const;
 
@@ -109,15 +111,17 @@ public:
 
     MOD_API virtual void _init();
 
-    // tmpe fix
-    MOD_API PuvLoadData::LoadResultWithTiming
-            initServer(Json::Value const& json, SemVersion const& version, PackLoadContext& context) override;
+    MOD_API void initServer(
+        ::ItemComprehensiveLoadResult&& data,
+        ::SemVersion const&             documentVersion,
+        ::PackLoadContext&              packLoadContext
+    ) override;
 
-    MOD_API PuvLoadData::LoadResultWithTiming initClient(
-        Json::Value const&  json,
-        SemVersion const&   version,
-        PackLoadContext&    context,
-        ItemIconInfoFactory iconFactory
+    MOD_API void initClient(
+        ::ItemComprehensiveLoadResult&& data,
+        ::SemVersion const&             documentVersion,
+        ::PackLoadContext&              packLoadContext,
+        ::std::optional<::ItemIconInfo> (*iconFactory)(::std::string const&, int)
     ) override;
 };
 

@@ -21,5 +21,5 @@ public:
 
     int size() const override;
 
-    ~ShapelessRecipe() override;
+    ~ShapelessRecipe() override = default;
 };

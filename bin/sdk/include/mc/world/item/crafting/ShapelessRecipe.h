@@ -1,0 +1,98 @@
+#pragma once
+
+#include <mc/_HeaderOutputPredefine.h>
+// auto generated inclusion list
+#include <mc/world/item/crafting/Recipe.h>
+// auto generated forward declare list
+// clang-format off
+class CraftingContainer;
+class CraftingContext;
+class ItemInstance;
+class RecipeIngredient;
+// clang-format on
+
+class ShapelessRecipe : public ::Recipe {
+#ifdef LL_PLAT_S
+public:
+    // prevent constructor by default
+    ShapelessRecipe();
+
+#else // LL_PLAT_C
+public:
+    // prevent constructor by default
+    ShapelessRecipe& operator=(ShapelessRecipe const&);
+    ShapelessRecipe(ShapelessRecipe const&);
+    ShapelessRecipe();
+
+#endif
+public:
+    // virtual functions
+    // NOLINTBEGIN
+    virtual ~ShapelessRecipe() /*override*/;
+
+    virtual ::std::vector<::ItemInstance> const&
+    assemble(::CraftingContainer& craftingContainer, ::CraftingContext& craftingContext) const /*override*/;
+
+    virtual int getCraftingSize() const /*override*/;
+
+    virtual ::RecipeIngredient const& getIngredient(int x, int y) const /*override*/;
+
+    virtual bool isShapeless() const /*override*/;
+
+    virtual bool matches(::CraftingContainer const& craftSlots, ::CraftingContext const& craftingContext) const
+        /*override*/;
+
+    virtual int size() const /*override*/;
+    // NOLINTEND
+
+public:
+    // member functions
+    // NOLINTBEGIN
+    MCAPI explicit ShapelessRecipe(::Recipe::ConstructionContext&& context);
+
+#ifdef LL_PLAT_C
+    MCAPI ShapelessRecipe(::ShapelessRecipe&& recipe);
+#endif
+    // NOLINTEND
+
+public:
+    // constructor thunks
+    // NOLINTBEGIN
+    MCAPI void* $ctor(::Recipe::ConstructionContext&& context);
+
+#ifdef LL_PLAT_C
+    MCAPI void* $ctor(::ShapelessRecipe&& recipe);
+#endif
+    // NOLINTEND
+
+public:
+    // destructor thunk
+    // NOLINTBEGIN
+    MCAPI void $dtor();
+    // NOLINTEND
+
+public:
+    // virtual function thunks
+    // NOLINTBEGIN
+    MCFOLD ::std::vector<::ItemInstance> const&
+    $assemble(::CraftingContainer& craftingContainer, ::CraftingContext& craftingContext) const;
+
+    MCAPI int $getCraftingSize() const;
+
+    MCFOLD ::RecipeIngredient const& $getIngredient(int x, int y) const;
+
+    MCFOLD bool $isShapeless() const;
+
+    MCAPI bool $matches(::CraftingContainer const& craftSlots, ::CraftingContext const& craftingContext) const;
+
+    MCAPI int $size() const;
+
+
+    // NOLINTEND
+
+public:
+    // vftables
+    // NOLINTBEGIN
+    MCAPI static void** $vftable();
+    // NOLINTEND
+};

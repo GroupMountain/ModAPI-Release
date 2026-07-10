@@ -1,6 +1,6 @@
 #pragma once
 #include "modapi/Macros.h"
-#include <mc/world/item/CreativeItemCategory.h>
+#include <mc/deps/shared_types/item/CreativeItemCategory.h>
 #include <mc/world/item/ItemInstance.h>
 
 namespace modapi::inline item {
@@ -11,9 +11,9 @@ class CustomCreativeItemRegistry {
 
 public:
     struct CreativeItem {
-        ::ItemInstance&        mItem;
-        ::CreativeItemCategory mCategory;
-        std::string            mGroup;
+        ::ItemInstance&                     mItem;
+        ::SharedTypes::CreativeItemCategory mCategory;
+        std::string                         mGroup;
     };
 
 public:
@@ -26,15 +26,15 @@ public:
 
 public:
     MOD_API uint32_t registerCreativeGroup(
-        std::string_view       groupName,
-        ::ItemInstance&&       icon     = ::ItemInstance(),
-        ::CreativeItemCategory category = ::CreativeItemCategory::Items
+        std::string_view                    groupName,
+        ::ItemInstance&&                    icon     = ::ItemInstance(),
+        ::SharedTypes::CreativeItemCategory category = ::SharedTypes::CreativeItemCategory::Items
     );
 
     MOD_API bool registerCreativeItem(
-        ::ItemInstance&&       item,
-        ::CreativeItemCategory category  = ::CreativeItemCategory::Items,
-        std::string_view       itemGroup = {}
+        ::ItemInstance&&                    item,
+        ::SharedTypes::CreativeItemCategory category  = ::SharedTypes::CreativeItemCategory::Items,
+        std::string_view                    itemGroup = {}
     );
 
     MOD_NDAPI std::vector<CreativeItem> getCreativeItem(std::string_view itemType);
